@@ -1,0 +1,32 @@
+<h1>
+    Products
+</h1>
+<div class="product-list">
+    <!-- <table class="product-table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of products">
+                <td>{{ product.name }}</td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.price | currency }}</td>
+                <td>
+                    <button class="add-to-cart-btn">Add to Cart</button>
+                </td>
+            </tr>
+        </tbody>
+    </table> -->
+
+    <div class="card" *ngFor="let product of products">
+        <h2>{{ product.name }}</h2>
+        <p>{{ product.description }}</p>
+        <p>{{ product.price | currency }}</p>
+        <button class="add-to-cart-btn">Add to Cart</button>
+    </div>
+</div>  
