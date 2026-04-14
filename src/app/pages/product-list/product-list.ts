@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { Product } from '../../store/product.model';
 import { CommonModule } from '@angular/common';
 import { ProductFacade } from '../../store/product.facade';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -34,11 +35,20 @@ export class ProductList {
   // ];  
 
 facade = inject(ProductFacade);
+private readonly router = inject(Router);
 
   products = this.facade.products;
   loading = this.facade.loading;
 
   ngOnInit() {
     this.facade.loadProducts();
+  }
+
+  showDetails(product: Product) {
+    // Navigate to the details page for the selected product
+    // You can use Angular's Router to navigate to the details page
+    // For example:
+    // this.router.navigate(['/details', product.id]);
+    this.router.navigate(['/products', product.id]);
   }
 }

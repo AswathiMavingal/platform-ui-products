@@ -23,7 +23,22 @@ export const productReducer = createReducer(
     ...state,
     loading: false,
     error,
+  })),
+
+  on(ProductActions.loadProduct, (state) => ({
+    ...state,
+    loading: true,
+  })),
+  on(ProductActions.loadProductSuccess, (state, { product }) => productAdapter.upsertOne(product, {
+    ...state,
+    loading: false,
+  })),
+  on(ProductActions.loadProductFailure, (state, { error }) => ({
+    ...state,
+    loading: false,
+    error: null,
   }))
+
 );
 
 // import {createEntityAdapter, EntityAdapter, EntityState} from '@ngrx/entity';

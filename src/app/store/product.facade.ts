@@ -23,6 +23,15 @@ products = this.store.selectSignal(ProductSelectors.selectAllProducts);
 
 loading = this.store.selectSignal(ProductSelectors.selectProductsLoading);
 
+getProduct(id: string) {
+  return this.store.selectSignal(ProductSelectors.selectProduct(id));
+}
+
+
+
+
+
+
   // Optional computed signal
 //   productCount = computed(() => this.products().length);
 
@@ -30,6 +39,19 @@ productCount = computed(() => this.products().length);
 
   loadProducts() {
     this.store.dispatch(ProductActions.loadProducts());
+  }
+
+  loadProduct(id: string) {
+    // this.store.dispatch(ProductActions.loadProduct({ id }));
+
+    //smart implementation check if the product is already loaded in the store, if not then dispatch the action to load it from API
+
+
+    const product = this.store.selectSignal(ProductSelectors.selectProduct(id))();
+
+    if (!product) {
+        this.store.dispatch(ProductActions.loadProduct({ id }));
+    }
   }
 }
 

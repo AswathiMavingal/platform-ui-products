@@ -1,1 +1,9 @@
-<p>details works!</p>
+<div *ngIf="product() as p; else loadingTpl">
+  <h2>{{ p.name }}</h2>
+  <p>{{ p.description }}</p>
+  <p>{{ p.price }}</p>
+</div>
+
+<ng-template #loadingTpl>
+  <p>Loading...</p>
+</ng-template>
