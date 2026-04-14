@@ -13,7 +13,6 @@ export const loadProductsFailure = createAction(
   props<{ error: string }>()
 );
 
-
 // import { createAction } from "@ngrx/store";
 // import { Product } from "./product.model";
 
