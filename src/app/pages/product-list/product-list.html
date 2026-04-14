@@ -23,10 +23,10 @@
         </tbody>
     </table> -->
 
-    <div class="card" *ngFor="let product of products">
+    <div class="card" *ngFor="let product of facade.products()">
         <h2>{{ product.name }}</h2>
         <p>{{ product.description }}</p>
         <p>{{ product.price | currency }}</p>
         <button class="add-to-cart-btn">Add to Cart</button>
     </div>
-</div>  
+</div> 

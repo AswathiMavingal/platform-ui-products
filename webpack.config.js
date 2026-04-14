@@ -12,6 +12,14 @@ module.exports = withModuleFederationPlugin({
   },
 
   shared: {
-    ...shareAll({ singleton: true, strictVersion: true, requiredVersion: 'auto' }),
+    // ...shareAll({ singleton: true, strictVersion: true, requiredVersion: 'auto' }),
+ '@angular/core': { singleton: true, strictVersion: true },
+  '@angular/common': { singleton: true, strictVersion: true },
+  '@angular/router': { singleton: true, strictVersion: true },
+  '@angular/common/http': { singleton: true, strictVersion: true },
+
+  '@ngrx/store': { singleton: true, strictVersion: true },
+  '@ngrx/effects': { singleton: true, strictVersion: true },
+  '@ngrx/entity': { singleton: true, strictVersion: true },
   },
 });
