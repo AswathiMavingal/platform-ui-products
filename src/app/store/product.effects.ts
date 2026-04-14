@@ -25,6 +25,22 @@ export class ProductEffects {
       )
     )
   );
+
+  loadProduct$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(ProductActions.loadProduct),
+        mergeMap(({ id }) =>
+            this.service.getProduct(id).pipe(
+                map((product) =>
+                    ProductActions.loadProductSuccess({ product })
+                ),  
+                catchError((err) =>
+                    of(ProductActions.loadProductFailure({ error: err.message }))
+                )
+            )
+        )
+    )
+  );
 }
 
 // import {Actions, createEffect, ofType} from '@ngrx/effects';

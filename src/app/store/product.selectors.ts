@@ -18,6 +18,19 @@ export const selectProductsLoading = createSelector(
   (state) => state.loading
 );
 
+export const selectProduct = (id: string) =>
+  createSelector(
+    selectProductState,
+    (state) => selectEntities(state)[id]
+  );
+//or
+//   export const selectProductById = (id: string) =>
+//   createSelector(
+//     productsFeature.selectProductsState,
+//     (state) => state.entities[id]
+//   );
+
+
 // import { createFeatureSelector, createSelector } from "@ngrx/store";
 // import { adapter, ProductState } from "./product.reducer";
 // import { map } from "rxjs/operators";

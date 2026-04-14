@@ -13,6 +13,21 @@ export const loadProductsFailure = createAction(
   props<{ error: string }>()
 );
 
+export const loadProduct = createAction(
+  '[Products] Load Product',
+  props<{ id: string }>()
+);
+
+export const loadProductSuccess = createAction(
+  '[Products] Load Product Success',
+  props<{ product: Product }>()
+);
+
+export const loadProductFailure = createAction(
+  '[Products] Load Product Failure',
+  props<{ error: string }>()
+);
+
 // import { createAction } from "@ngrx/store";
 // import { Product } from "./product.model";
 
