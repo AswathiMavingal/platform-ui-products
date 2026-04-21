@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Product as IProduct } from '../store/product.model';
 import { environment } from '../../../environment/environment.dev';
 
+
 @Injectable({
   providedIn: 'root',
 })
@@ -12,7 +13,6 @@ export class ProductService {
   private apiUrl = environment.apiUrl + '/products';
 
   getProducts(): Observable<IProduct[]> {
-    console.log('Fetching products from API:', this.apiUrl);
     return this.http.get<IProduct[]>(this.apiUrl);
   }
 

@@ -1,0 +1,119 @@
+name: CI Checks
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  # -----------------------
+  # 1. UNIT TESTS
+  # -----------------------
+  unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run unit tests
+        run: npm test -- --watch=false --browsers=ChromeHeadlessCI
+
+  # -----------------------
+  # 2. LINTING  
+  # -----------------------
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run linting
+        run: npm run lint
+
+  # -----------------------
+  # 3. BUILD  
+  # -----------------------
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the project
+        run: npm run build
+
+  # -----------------------
+  # 3. CYPRESS E2E
+  # -----------------------
+  e2e-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Cypress E2E tests
+        run: |
+          if [ -f "cypress.config.ts" ]; then
+            npx cypress run
+          else
+            echo "No Cypress config, skipping"
+          fi
+
+  # -----------------------
+  # 4. SONARQUBE
+  # -----------------------
+  sonar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run SonarQube analysis
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        run: |
+          if [ -f "sonar-project.properties" ]; then
+            npx sonar-scanner
+          else
+            echo "No SonarQube config, skipping"
+          fi
+
