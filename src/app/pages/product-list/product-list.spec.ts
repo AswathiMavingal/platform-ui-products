@@ -2,7 +2,6 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProductList } from './product-list';
 import { ProductFacade } from '../../store/product.facade';
-import { of } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { signal } from '@angular/core';
 describe('ProductList', () => {

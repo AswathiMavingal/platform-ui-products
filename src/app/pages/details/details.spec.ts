@@ -1,13 +1,11 @@
-import { TestBed, TestBedStatic } from '@angular/core/testing';
+import { TestBed, ComponentFixture } from '@angular/core/testing';
 
 // Initialize the Angular testing environment
 
 import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { ComponentFixture } from '@angular/core/testing';
 import { ProductFacade } from '../../store/product.facade';
 import { Details } from './details';
 import { ActivatedRoute } from '@angular/router';
-import { By } from '@angular/platform-browser';
 import { signal } from '@angular/core';
 
 describe('Details', () => {
