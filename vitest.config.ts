@@ -5,5 +5,8 @@ export default defineConfig({
     globals: true, // This fixes "describe is not defined"
     environment: 'jsdom',
     setupFiles: './test-setup.ts',
+    coverage: {
+      reporter: ['text', 'lcov'],
+    },
   },
 });
