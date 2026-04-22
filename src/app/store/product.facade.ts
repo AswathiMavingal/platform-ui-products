@@ -1,9 +1,10 @@
 
-import { inject, Injectable, computed } from '@angular/core';
+import { inject, Injectable, computed, signal, Signal } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as ProductActions from './product.actions';
 import * as ProductSelectors from './product.selectors';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { Product } from './product.model';
 
 @Injectable({ providedIn: 'root' })
 export class ProductFacade {
@@ -14,7 +15,7 @@ export class ProductFacade {
 //     initialValue: [],
 //   });
 
-products = this.store.selectSignal(ProductSelectors.selectAllProducts);
+products: Signal<Product[]> = this.store.selectSignal(ProductSelectors.selectAllProducts) || signal<Product[]>([]);
 
 //   loading = toSignal(
 //     this.store.select(ProductSelectors.selectProductsLoading),
