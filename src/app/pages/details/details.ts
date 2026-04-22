@@ -10,11 +10,10 @@ import { CommonModule } from '@angular/common';
   styleUrl: './details.scss',
 })
 export class Details {
-
   facade = inject(ProductFacade);
   router = inject(ActivatedRoute);
 
-  productId = this.router.snapshot.paramMap.get('id')!; 
+  productId = this.router.snapshot.paramMap.get('id')!;
 
   product = this.facade.getProduct(this.productId);
 

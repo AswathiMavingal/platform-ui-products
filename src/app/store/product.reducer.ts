@@ -16,7 +16,7 @@ export const productReducer = createReducer(
     productAdapter.setAll(products, {
       ...state,
       loading: false,
-    })
+    }),
   ),
 
   on(ProductActions.loadProductsFailure, (state, { error }) => ({
@@ -29,23 +29,24 @@ export const productReducer = createReducer(
     ...state,
     loading: true,
   })),
-  on(ProductActions.loadProductSuccess, (state, { product }) => productAdapter.upsertOne(product, {
-    ...state,
-    loading: false,
-  })),
+  on(ProductActions.loadProductSuccess, (state, { product }) =>
+    productAdapter.upsertOne(product, {
+      ...state,
+      loading: false,
+    }),
+  ),
   on(ProductActions.loadProductFailure, (state, { error }) => ({
     ...state,
     loading: false,
     error: null,
-  }))
-
+  })),
 );
 
 // import {createEntityAdapter, EntityAdapter, EntityState} from '@ngrx/entity';
 // import {Product} from './product.model';
 // // import {ProductActions, ProductActionTypes} from './product.actions';
 // import { ProductActionTypes, ProductActions } from './product.actions';
-// import { Action } from '@ngrx/store';  
+// import { Action } from '@ngrx/store';
 
 // export interface ProductState extends EntityState<Product> {
 //     loading: boolean;
@@ -66,7 +67,7 @@ export const productReducer = createReducer(
 //     state: ProductState|undefined = initialState,
 //     action: Action
 // ): ProductState {
-//     const productAction = action as ProductActions; 
+//     const productAction = action as ProductActions;
 //     switch (productAction.type) {
 //         case ProductActionTypes.LoadProducts:
 //             console.log('Loading products...');

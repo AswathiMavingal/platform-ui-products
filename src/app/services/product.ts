@@ -12,7 +12,6 @@ export class ProductService {
   private apiUrl = environment.apiUrl + '/products';
 
   getProducts(): Observable<IProduct[]> {
-    console.log('Fetching products from API:', this.apiUrl);
     return this.http.get<IProduct[]>(this.apiUrl);
   }
 
@@ -31,5 +30,4 @@ export class ProductService {
   deleteProduct(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
-
 }
