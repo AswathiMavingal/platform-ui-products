@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { Product as IProduct } from '../store/product.model';
 import { environment } from '../../../environment/environment.dev';
 
-
 @Injectable({
   providedIn: 'root',
 })
@@ -31,5 +30,4 @@ export class ProductService {
   deleteProduct(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
-
 }

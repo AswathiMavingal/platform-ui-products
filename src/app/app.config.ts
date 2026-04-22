@@ -17,6 +17,5 @@ export const appConfig: ApplicationConfig = {
     //  provideEffects([ProductEffects]),  // ✅ REGISTER your effect
     // // provideEffects([ProductEffects]),
     // provideHttpClient()
-    
   ],
 };

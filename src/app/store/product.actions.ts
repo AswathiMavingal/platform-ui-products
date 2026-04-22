@@ -5,27 +5,24 @@ export const loadProducts = createAction('[Products] Load');
 
 export const loadProductsSuccess = createAction(
   '[Products] Load Success',
-  props<{ products: Product[] }>()
+  props<{ products: Product[] }>(),
 );
 
 export const loadProductsFailure = createAction(
   '[Products] Load Failure',
-  props<{ error: string }>()
+  props<{ error: string }>(),
 );
 
-export const loadProduct = createAction(
-  '[Products] Load Product',
-  props<{ id: string }>()
-);
+export const loadProduct = createAction('[Products] Load Product', props<{ id: string }>());
 
 export const loadProductSuccess = createAction(
   '[Products] Load Product Success',
-  props<{ product: Product }>()
+  props<{ product: Product }>(),
 );
 
 export const loadProductFailure = createAction(
   '[Products] Load Product Failure',
-  props<{ error: string }>()
+  props<{ error: string }>(),
 );
 
 // import { createAction } from "@ngrx/store";
@@ -77,7 +74,7 @@ export const loadProductFailure = createAction(
 //     (id: string) => ({ id })
 // );
 
-// export type ProductActions = 
+// export type ProductActions =
 
 //   | ReturnType<typeof LoadProducts>
 //   | ReturnType<typeof LoadProductsSuccess>

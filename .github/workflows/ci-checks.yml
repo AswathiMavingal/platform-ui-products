@@ -25,7 +25,7 @@ jobs:
         run: npm test -- --watch=false
 
   # -----------------------
-  # 2. LINTING  
+  # 2. LINTING
   # -----------------------
   lint:
     runs-on: ubuntu-latest
@@ -45,7 +45,7 @@ jobs:
         run: npm run lint
 
   # -----------------------
-  # 3. BUILD  
+  # 3. BUILD
   # -----------------------
   build:
     runs-on: ubuntu-latest
@@ -97,9 +97,9 @@ jobs:
     steps:
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5
         with:
-          fetch-depth: 0  
+          fetch-depth: 0
       - name: SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@fd88b7d7ccbaefd23d8f36f73b59db7a3d246602 
+        uses: SonarSource/sonarqube-scan-action@fd88b7d7ccbaefd23d8f36f73b59db7a3d246602
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     # steps:
@@ -124,4 +124,3 @@ jobs:
     #       else
     #         echo "No SonarQube config, skipping"
     #       fi
-

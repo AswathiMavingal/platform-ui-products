@@ -16,7 +16,7 @@ export interface ProductState extends EntityState<Product> {
 
 export const productAdapter = createEntityAdapter<Product>({
   selectId: (product: Product) => product.id,
-   sortComparer: (a: Product, b: Product) => a.name.localeCompare(b.name),
+  sortComparer: (a: Product, b: Product) => a.name.localeCompare(b.name),
 });
 
 export const initialState: ProductState = productAdapter.getInitialState({

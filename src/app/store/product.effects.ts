@@ -1,4 +1,3 @@
-
 import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import * as ProductActions from './product.actions';
@@ -15,31 +14,23 @@ export class ProductEffects {
       ofType(ProductActions.loadProducts),
       mergeMap(() =>
         this.service.getProducts().pipe(
-          map((products) =>
-            ProductActions.loadProductsSuccess({ products })
-          ),
-          catchError((err) =>
-            of(ProductActions.loadProductsFailure({ error: err.message }))
-          )
-        )
-      )
-    )
+          map((products) => ProductActions.loadProductsSuccess({ products })),
+          catchError((err) => of(ProductActions.loadProductsFailure({ error: err.message }))),
+        ),
+      ),
+    ),
   );
 
   loadProduct$ = createEffect(() =>
     this.actions$.pipe(
       ofType(ProductActions.loadProduct),
-        mergeMap(({ id }) =>
-            this.service.getProduct(id).pipe(
-                map((product) =>
-                    ProductActions.loadProductSuccess({ product })
-                ),  
-                catchError((err) =>
-                    of(ProductActions.loadProductFailure({ error: err.message }))
-                )
-            )
-        )
-    )
+      mergeMap(({ id }) =>
+        this.service.getProduct(id).pipe(
+          map((product) => ProductActions.loadProductSuccess({ product })),
+          catchError((err) => of(ProductActions.loadProductFailure({ error: err.message }))),
+        ),
+      ),
+    ),
   );
 }
 
@@ -54,7 +45,7 @@ export class ProductEffects {
 //     constructor(private productService: ProductService, private actions$: Actions) {
 
 //         console.log('Actions:', this.actions$);
-//     }  
+//     }
 //     loadProducts$ = createEffect(() =>
 //         this.actions$.pipe(
 //             ofType(LoadProducts),

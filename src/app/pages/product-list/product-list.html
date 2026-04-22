@@ -1,8 +1,6 @@
-<h1>
-    Products
-</h1>
+<h1>Products</h1>
 <div class="product-list">
-    <!-- <table class="product-table">
+  <!-- <table class="product-table">
         <thead>
             <tr>
                 <th>Name</th>
@@ -23,10 +21,10 @@
         </tbody>
     </table> -->
 
-    <div class="card" *ngFor="let product of facade.products()" (click)="showDetails(product)">
-        <h2>{{ product.name }}</h2>
-        <p>{{ product.description }}</p>
-        <p>{{ product.price | currency }}</p>
-        <button class="add-to-cart-btn">Add to Cart</button>
-    </div>
-</div> 
+  <div class="card" *ngFor="let product of facade.products()" (click)="showDetails(product)">
+    <h2>{{ product.name }}</h2>
+    <p>{{ product.description }}</p>
+    <p>{{ product.price | currency }}</p>
+    <button class="add-to-cart-btn">Add to Cart</button>
+  </div>
+</div>

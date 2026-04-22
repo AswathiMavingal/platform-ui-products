@@ -32,10 +32,10 @@ export class ProductList {
   //     description: 'Description for Product 3',
   //     price: 5.99,
   //   },
-  // ];  
+  // ];
 
-facade = inject(ProductFacade);
-private readonly router = inject(Router);
+  facade = inject(ProductFacade);
+  private readonly router = inject(Router);
 
   products = this.facade.products;
   loading = this.facade.loading;

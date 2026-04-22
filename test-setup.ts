@@ -11,7 +11,6 @@ import { provideMockStore } from '@ngrx/store/testing';
 //   });
 // });
 
-
 // import 'zone.js';
 // import 'zone.js/testing';
 
@@ -22,7 +21,4 @@ import {
 } from '@angular/platform-browser-dynamic/testing';
 
 // Initialize Angular testing environment ONCE
-getTestBed().initTestEnvironment(
-  BrowserDynamicTestingModule,
-  platformBrowserDynamicTesting()
-);
+getTestBed().initTestEnvironment(BrowserDynamicTestingModule, platformBrowserDynamicTesting());
